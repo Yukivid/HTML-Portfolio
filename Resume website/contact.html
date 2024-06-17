@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+		
+		.contact-info {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+
+        .contact-form {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .contact-form textarea {
+            resize: none;
+            height: 150px;
+        }
+
+        .contact-form button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .contact-details {
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Contact Me</h1>
+    </div>
+
+    <div class="contact-details">
+        <p>Email: deepeshrajay@gmail@gmail.com</p>
+        <p>Phone: 9884539119</p>
+    </div>
+
+    <div class="contact-form">
+        <form action="/submit-contact" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email(from):</label>
+            <input type="email" id="email" name="email" required>
+			
+			<label for="email">Email(to):</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Submit</button>
+			
+			<div class="contact-info">
+				
+				<a href="file:///C:/Users/Kisho/OneDrive/Desktop/web%20programming/Resume%20website/index.html">Resume</a>
+				<a href="file:///C:/Users/Kisho/OneDrive/Desktop/web%20programming/Resume%20website/portfolio.html">Portfolio</a>
+				<a href="file:///C:/Users/Kisho/OneDrive/Desktop/web%20programming/Resume%20website/feedback.html">Feedback</a>
+			</div>
+
+        </form>
+    </div>
+</body>
+</html>
