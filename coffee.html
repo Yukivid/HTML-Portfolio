@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 20px;
+      background-color: #f8f9fa;
+    }
+    h1 {
+      color: #343a40;
+    }
+    form {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td {
+      padding: 8px 10px;
+      vertical-align: middle;
+    }
+    label {
+      font-weight: bold;
+    }
+    input[type="number"], input[type="text"], input[type="email"] {
+      width: calc(100% - 20px);
+      padding: 6px;
+      margin-bottom: 10px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      transition: border-color 0.3s;
+    }
+    input[type="number"]:focus, input[type="text"]:focus, input[type="email"]:focus {
+      border-color: #495057;
+    }
+    button {
+      background-color: #007bff;
+      color: #ffffff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #receipt {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    #receipt h2 {
+      color: #28a745;
+    }
+    #receipt p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+  </style>
+  <title>Coffee Shop</title>
+</head>
+<body>
+  <h1>Coffee Shop</h1>
+  <form id="coffee-order-form">
+    <fieldset class="container">
+      <table>
+        <tr>
+          <td><label for="regular-coffee">Regular Coffee:</label></td>
+          <td><input type="number" id="regular-coffee" min="0" value="0"></td>
+        </tr>
+        <tr>
+          <td><label for="decaf-coffee">Decaffeinated Coffee:</label></td>
+          <td><input type="number" id="decaf-coffee" min="0" value="0"></td>
+        </tr>
+        <tr>
+          <td><label for="mocha-coffee">Mocha Coffee:</label></td>
+          <td><input type="number" id="mocha-coffee" min="0" value="0"></td>
+        </tr>
+        <tr>
+          <td><label for="name">Name:</label></td>
+          <td><input type="text" id="name"></td>
+        </tr>
+        <tr>
+          <td><label for="email">Email:</label></td>
+          <td><input type="email" id="email"></td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align: center;"><button type="button" onclick="calculateTotal()">Calculate Total</button></td>
+        </tr>
+      </table>
+    </fieldset>
+  </form>
+  <div id="receipt"></div>
+
+  <script>
+    function calculateTotal() {
+      const regularCoffeePrice = 9;
+      const decafCoffeePrice = 8;
+      const mochaCoffeePrice = 11;
+      const discountThreshold = 100;
+      const discountAmount = 15;
+
+      const regularCoffeeQty = parseInt(document.getElementById('regular-coffee').value) || 0;
+      const decafCoffeeQty = parseInt(document.getElementById('decaf-coffee').value) || 0;
+      const mochaCoffeeQty = parseInt(document.getElementById('mocha-coffee').value) || 0;
+
+      const regularCoffeeCost = regularCoffeeQty * regularCoffeePrice;
+      const decafCoffeeCost = decafCoffeeQty * decafCoffeePrice;
+      const mochaCoffeeCost = mochaCoffeeQty * mochaCoffeePrice;
+
+      const totalCost = regularCoffeeCost + decafCoffeeCost + mochaCoffeeCost;
+
+      let receipt = `<h2>Receipt</h2>`;
+      receipt += `<p><strong>Name:</strong> ${document.getElementById('name').value}</p>`;
+      receipt += `<p><strong>Email:</strong> ${document.getElementById('email').value}</p>`;
+      receipt += `<p><strong>You purchased ${regularCoffeeQty} bags of regular, totaling $${regularCoffeeCost}.</strong></p>`;
+      receipt += `<p><strong>You purchased ${decafCoffeeQty} bags of decaf, totaling $${decafCoffeeCost}.</strong></p>`;
+      receipt += `<p><strong>You purchased ${mochaCoffeeQty} bags of mocha, totaling $${mochaCoffeeCost}.</strong></p>`;
+
+      if (totalCost > discountThreshold) {
+        const discountedCost = totalCost - discountAmount;
+        receipt += `<p><strong>Your total purchase cost is $${discountedCost} after a $${discountAmount} discount.</strong></p>`;
+      } else {
+        receipt += `<p><strong>Your total purchase cost is $${totalCost}.</strong></p>`;
+      }
+
+      document.getElementById('receipt').innerHTML = receipt;
+    }
+  </script>
+</body>
+</html>
