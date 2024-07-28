@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Detection Web App</title>
+</head>
+<body>
+    <h1>Face Detection Web App</h1>
+    
+    <video id="videoElement" autoplay></video>
+    
+    <script>
+        // Access the webcam video stream
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+                var video = document.getElementById('videoElement');
+                video.srcObject = stream;
+            })
+            .catch(function(err) {
+                console.log('An error occurred: ' + err);
+            });
+    </script>
+</body>
+</html>
